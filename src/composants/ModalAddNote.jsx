@@ -23,8 +23,8 @@ export default function ModalAddNote() {
         <MDBModalDialog>
           <MDBModalContent>
             <MDBModalHeader>
-              <MDBInput type="texte" label="Note Titre"></MDBInput>
               <MDBInput type="texte" label="Descritpion"></MDBInput>
+              <MDBInput type="texte" label="Note Titre"></MDBInput>
               <MDBBtn
                 className="btn-close"
                 color="none"
