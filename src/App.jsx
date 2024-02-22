@@ -5,7 +5,10 @@ function App() {
   return (
     <>
       <Navbar />
-      <Note />
+      <div className="note-container">
+        <Note />
+        <Note />
+      </div>
     </>
   );
 }
