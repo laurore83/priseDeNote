@@ -6,23 +6,46 @@ import {
 } from "mdb-react-ui-kit";
 import ModalChangeNote from "./ModalChangeNote";
 import ModalDeleteNote from "./ModalDeleteNote";
+import { useEffect, useState } from "react";
 
 export default function Note() {
+  const [notes, setNotes] = useState([]);
+
+  useEffect(() => {
+    // Récupérer les notes depuis localStorage
+    const storedNotes = JSON.parse(localStorage.getItem("notes")) || [];
+    setNotes(storedNotes);
+  }, []);
+
+  // const [titre, setTitre] = useState("");
+  // const [description, setDescription] = useState("");
+
+  // useEffect(() => {
+  //   // Récupérer les données de localStorage lorsque le composant est monté
+  //   const savedTitre = localStorage.getItem("titre");
+  //   const savedDescription = localStorage.getItem("description");
+
+  //   if (savedTitre && savedDescription) {
+  //     setTitre(savedTitre);
+  //     setDescription(savedDescription);
+  //   }
+  // }, []); // Le tableau vide [] assure que useEffect ne s'exécute qu'une fois
   return (
-    <div className="card-container">
-      <MDBCard>
-        <MDBCardBody>
-          <MDBCardTitle>Card title</MDBCardTitle>
-          <MDBCardText>
-            Some quick example text to build on the card title and make up the
-            bulk of the cards content.
-          </MDBCardText>
-          <div className="cardBtn">
-            <ModalChangeNote />
-            <ModalDeleteNote />
-          </div>
-        </MDBCardBody>
-      </MDBCard>
-    </div>
+    <>
+      {notes.map((note, index) => (
+        <div key={index} className="card-container">
+          <MDBCard>
+            <MDBCardBody>
+              <MDBCardTitle>{note.titre}</MDBCardTitle>
+              <MDBCardText>{note.description}</MDBCardText>
+              <div className="cardBtn">
+                <ModalChangeNote />
+                <ModalDeleteNote />
+              </div>
+            </MDBCardBody>
+          </MDBCard>
+        </div>
+      ))}
+    </>
   );
 }
