@@ -7,6 +7,7 @@ import {
   MDBModalHeader,
   MDBModalFooter,
   MDBInput,
+  MDBModalBody,
 } from "mdb-react-ui-kit";
 
 export default function ModalAddNote() {
@@ -61,20 +62,7 @@ export default function ModalAddNote() {
                   rows={4}
                   label="Message"
                 /> */}
-                <MDBInput
-                  type="texte"
-                  id="description"
-                  label="Descritpion"
-                  value={description}
-                  onChange={(e) => setDescription(e.target.value)}
-                ></MDBInput>
-                <MDBInput
-                  type="texte"
-                  id="titre"
-                  label="Note Titre"
-                  value={titre}
-                  onChange={(e) => setTitre(e.target.value)}
-                ></MDBInput>
+
                 <MDBBtn
                   type="button"
                   className="btn-close"
@@ -82,6 +70,22 @@ export default function ModalAddNote() {
                   onClick={toggleOpen}
                 ></MDBBtn>
               </MDBModalHeader>
+              <MDBModalBody>
+                <MDBInput
+                  type="texte"
+                  id="titre"
+                  label="Note Titre"
+                  value={titre}
+                  onChange={(e) => setTitre(e.target.value)}
+                ></MDBInput>
+                <MDBInput
+                  type="texte"
+                  id="description"
+                  label="Descritpion"
+                  value={description}
+                  onChange={(e) => setDescription(e.target.value)}
+                ></MDBInput>
+              </MDBModalBody>
 
               <MDBModalFooter>
                 <MDBBtn type="button" color="light" onClick={toggleOpen}>

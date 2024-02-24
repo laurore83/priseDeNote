@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import {
   MDBBtn,
   MDBModal,
@@ -9,13 +10,13 @@ import {
 } from "mdb-react-ui-kit";
 import { useState } from "react";
 
-export default function ModalDeleteNote({ onDelete }) {
+export default function ModalDeleteNote({ onDelete, indexNote }) {
   const [centralModal, setCentralModal] = useState(false);
 
   const toggleOpen = () => setCentralModal(!centralModal);
 
   const handleDelete = () => {
-    onDelete(); // Appeler la fonction onDelete pour supprimer la note
+    onDelete(indexNote); // Appeler la fonction onDelete pour supprimer la note
     toggleOpen(); // Fermer le modal après la suppression
   };
 
@@ -51,3 +52,8 @@ export default function ModalDeleteNote({ onDelete }) {
     </>
   );
 }
+
+ModalDeleteNote.propTypes = {
+  onDelete: PropTypes.func,
+  indexNote: PropTypes.number,
+};
