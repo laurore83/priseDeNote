@@ -17,6 +17,14 @@ export default function Note() {
     setNotes(storedNotes);
   }, []);
 
+  // Fonction pour supprimer une note
+  const handleDeleteNote = (index) => {
+    const updatedNotes = [...notes];
+    updatedNotes.splice(index, 1); // Supprimer la note du tableau
+    setNotes(updatedNotes); // Mettre à jour les notes
+    // Mettre à jour le localStorage
+    localStorage.setItem("notes", JSON.stringify(updatedNotes));
+  };
   // const [titre, setTitre] = useState("");
   // const [description, setDescription] = useState("");
 
@@ -40,7 +48,7 @@ export default function Note() {
               <MDBCardText>{note.description}</MDBCardText>
               <div className="cardBtn">
                 <ModalChangeNote />
-                <ModalDeleteNote />
+                <ModalDeleteNote onDelete={handleDeleteNote} />
               </div>
             </MDBCardBody>
           </MDBCard>

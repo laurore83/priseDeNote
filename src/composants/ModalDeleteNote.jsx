@@ -9,10 +9,15 @@ import {
 } from "mdb-react-ui-kit";
 import { useState } from "react";
 
-export default function ModalDeleteNote() {
+export default function ModalDeleteNote({ onDelete }) {
   const [centralModal, setCentralModal] = useState(false);
 
   const toggleOpen = () => setCentralModal(!centralModal);
+
+  const handleDelete = () => {
+    onDelete(); // Appeler la fonction onDelete pour supprimer la note
+    toggleOpen(); // Fermer le modal après la suppression
+  };
 
   return (
     <>
@@ -36,7 +41,7 @@ export default function ModalDeleteNote() {
               <MDBBtn color="light" onClick={toggleOpen}>
                 Annuler
               </MDBBtn>
-              <MDBBtn type="submit" color="dark">
+              <MDBBtn type="submit" color="dark" onClick={handleDelete}>
                 Confirmer
               </MDBBtn>
             </MDBModalFooter>

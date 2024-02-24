@@ -24,7 +24,7 @@ export default function ModalAddNote() {
 
     // Ajouter la nouvelle note au tableau des notes
     const newNote = { titre: titre, description: description };
-    const updatedNotes = [...existingNotes, newNote];
+    const updatedNotes = [newNote, ...existingNotes];
 
     // Stockage des notes mises à jour dans localStorage
     localStorage.setItem("notes", JSON.stringify(updatedNotes));
